@@ -1,0 +1,2326 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ES CREATION — Digital Experiences</title>
+
+<meta name="description" content="ES CREATION creates premium websites and digital experiences for ambitious brands and businesses.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ES CREATION
+   PREMIUM CREATIVE STUDIO
+========================================================= */
+
+:root{
+  --black:#080808;
+  --black2:#0d0d0d;
+  --cream:#f1eee7;
+  --white:#f8f7f3;
+  --muted:#858585;
+  --line:rgba(255,255,255,.11);
+  --darkline:rgba(0,0,0,.12);
+  --accent:#c8b58a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor{
+  position:fixed;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:white;
+  pointer-events:none;
+  z-index:99999;
+  transform:translate(-50%,-50%);
+  mix-blend-mode:difference;
+  transition:transform .12s ease;
+}
+
+.cursor-ring{
+  position:fixed;
+  width:35px;
+  height:35px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:
+    width .25s ease,
+    height .25s ease,
+    transform .08s ease;
+}
+
+.cursor-ring.big{
+  width:65px;
+  height:65px;
+}
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+.loader{
+  position:fixed;
+  inset:0;
+  background:#070707;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:
+    loaderFade .8s ease 1.8s forwards;
+}
+
+.loader-inner{
+  text-align:center;
+  overflow:hidden;
+}
+
+.loader-brand{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,7vw,80px);
+  letter-spacing:10px;
+  animation:loaderUp 1s ease;
+}
+
+.loader-line{
+  height:1px;
+  width:0;
+  background:#777;
+  margin:18px auto 0;
+  animation:loaderLine 1.2s ease .3s forwards;
+}
+
+@keyframes loaderUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes loaderLine{
+  to{
+    width:120px;
+  }
+}
+
+@keyframes loaderFade{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:88px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:2000;
+  transition:.45s ease;
+}
+
+.nav.scrolled{
+  height:72px;
+  background:rgba(8,8,8,.84);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.logo{
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.logo span{
+  color:#777;
+  font-weight:300;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:36px;
+  font-size:9px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#aaa;
+}
+
+.nav-links a{
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:1px;
+  background:white;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:white;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-cta{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.nav-availability{
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.nav-contact{
+  padding:12px 20px;
+  border:1px solid #555;
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.nav-contact:hover{
+  background:white;
+  color:#111;
+  border-color:white;
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:none;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:150px 7% 90px;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:750px;
+  height:750px;
+  border-radius:50%;
+  background:rgba(184,161,119,.06);
+  filter:blur(130px);
+  top:-350px;
+  right:-200px;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  border-radius:50%;
+  background:rgba(255,255,255,.025);
+  filter:blur(100px);
+  bottom:-250px;
+  left:-100px;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.hero-topline{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  color:#777;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:35px;
+}
+
+.hero-dot{
+  width:5px;
+  height:5px;
+  background:#aaa;
+  border-radius:50%;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(70px,11vw,165px);
+  font-weight:400;
+  line-height:.82;
+  letter-spacing:-7px;
+  max-width:1250px;
+}
+
+.hero h1 em{
+  font-style:italic;
+  margin-left:7vw;
+}
+
+.hero-bottom{
+  margin-top:65px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:50px;
+}
+
+.hero-copy{
+  max-width:470px;
+}
+
+.hero-copy p{
+  color:#8b8b8b;
+  font-size:13px;
+  line-height:2;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:16px 25px;
+  border:1px solid #555;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:8px;
+  transition:.35s;
+}
+
+.btn:hover{
+  background:white;
+  color:#111;
+  border-color:white;
+}
+
+.btn-light{
+  background:white;
+  color:#111;
+  border-color:white;
+}
+
+.btn-light:hover{
+  background:transparent;
+  color:white;
+}
+
+.hero-index{
+  position:absolute;
+  right:6%;
+  bottom:45px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:3px;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro{
+  padding:115px 7%;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:.7fr 2fr;
+  gap:100px;
+}
+
+.section-label{
+  color:#666;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+}
+
+.intro-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,5.5vw,78px);
+  line-height:.98;
+  font-weight:400;
+  letter-spacing:-2px;
+}
+
+.intro-content h2 em{
+  font-style:italic;
+}
+
+.intro-text{
+  display:flex;
+  justify-content:space-between;
+  gap:50px;
+  margin-top:45px;
+}
+
+.intro-text p{
+  color:#777;
+  max-width:600px;
+  font-size:13px;
+  line-height:2;
+}
+
+.intro-signature{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:#777;
+  white-space:nowrap;
+  align-self:flex-end;
+}
+
+
+/* =========================================================
+   SELECTED WORK
+========================================================= */
+
+.work{
+  padding:140px 7%;
+}
+
+.section-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:75px;
+}
+
+.section-heading-left .section-label{
+  margin-bottom:17px;
+}
+
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:400;
+  line-height:.88;
+  letter-spacing:-3px;
+}
+
+.section-title em{
+  font-style:italic;
+}
+
+.section-description{
+  max-width:300px;
+  color:#686868;
+  font-size:10px;
+  line-height:1.9;
+}
+
+
+/* PROJECT */
+
+.project{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.55fr .65fr;
+  min-height:650px;
+  margin-bottom:28px;
+  background:#101010;
+  overflow:hidden;
+}
+
+.project:nth-of-type(even){
+  grid-template-columns:.65fr 1.55fr;
+}
+
+.project:nth-of-type(even) .project-image{
+  order:2;
+}
+
+.project-image{
+  position:relative;
+  min-height:650px;
+  overflow:hidden;
+}
+
+.project-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1.2s cubic-bezier(.2,.7,.2,1);
+  filter:saturate(.82);
+}
+
+.project:hover .project-image img{
+  transform:scale(1.045);
+  filter:saturate(1);
+}
+
+.project-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.12),
+    transparent 50%,
+    rgba(0,0,0,.5)
+  );
+}
+
+.project-number{
+  position:absolute;
+  z-index:2;
+  top:25px;
+  left:27px;
+  font-size:8px;
+  letter-spacing:3px;
+  color:#ddd;
+}
+
+.project-location{
+  position:absolute;
+  z-index:2;
+  right:27px;
+  top:25px;
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#bbb;
+}
+
+.project-info{
+  padding:50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+}
+
+.project-info::before{
+  content:"";
+  position:absolute;
+  width:1px;
+  height:80px;
+  background:#333;
+  left:50px;
+  top:50px;
+}
+
+.project-category{
+  color:#686868;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.project-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,4vw,66px);
+  line-height:.88;
+  font-weight:400;
+  letter-spacing:-2px;
+}
+
+.project-name em{
+  font-style:italic;
+}
+
+.project-description{
+  max-width:330px;
+  color:#737373;
+  font-size:11px;
+  line-height:1.9;
+  margin:28px 0 30px;
+}
+
+.project-link{
+  display:inline-flex;
+  align-items:center;
+  gap:15px;
+  width:max-content;
+  padding-bottom:9px;
+  border-bottom:1px solid #555;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.3s;
+}
+
+.project-link span{
+  transition:.3s;
+}
+
+.project-link:hover{
+  border-color:white;
+}
+
+.project-link:hover span{
+  transform:translateX(7px);
+}
+
+.project-meta{
+  position:absolute;
+  top:50px;
+  right:50px;
+  color:#444;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+
+/* =========================================================
+   GOLD DIVIDER
+========================================================= */
+
+.gold-line{
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(200,181,138,.5),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+  padding:140px 7%;
+  background:var(--cream);
+  color:#111;
+}
+
+.services .section-label{
+  color:#777;
+}
+
+.services-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:50px;
+}
+
+.services-title{
+  margin-top:17px;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,7vw,100px);
+  line-height:.88;
+  font-weight:400;
+  letter-spacing:-4px;
+}
+
+.services-title em{
+  font-style:italic;
+}
+
+.services-intro{
+  max-width:320px;
+  color:#777;
+  font-size:11px;
+  line-height:1.9;
+}
+
+.service-list{
+  margin-top:80px;
+  border-top:1px solid #ccc;
+}
+
+.service{
+  display:grid;
+  grid-template-columns:80px 1.2fr 1fr 50px;
+  align-items:center;
+  gap:30px;
+  padding:31px 0;
+  border-bottom:1px solid #ccc;
+  transition:.35s;
+}
+
+.service:hover{
+  padding-left:15px;
+  padding-right:15px;
+  background:rgba(255,255,255,.35);
+}
+
+.service-number{
+  font-size:9px;
+  color:#999;
+}
+
+.service h3{
+  font-family:'Playfair Display',serif;
+  font-size:31px;
+  font-weight:400;
+}
+
+.service p{
+  color:#777;
+  font-size:10px;
+  line-height:1.8;
+  max-width:360px;
+}
+
+.service-arrow{
+  text-align:right;
+  font-size:18px;
+  color:#999;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process{
+  padding:140px 7%;
+}
+
+.process-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+
+.process-list{
+  margin-top:75px;
+  border-top:1px solid #222;
+}
+
+.process-step{
+  display:grid;
+  grid-template-columns:80px 1fr 1fr 40px;
+  align-items:start;
+  gap:30px;
+  padding:38px 0;
+  border-bottom:1px solid #222;
+}
+
+.process-number{
+  color:#555;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.process-step h3{
+  font-family:'Playfair Display',serif;
+  font-size:37px;
+  font-weight:400;
+}
+
+.process-step p{
+  color:#666;
+  font-size:11px;
+  line-height:1.9;
+  max-width:370px;
+}
+
+
+/* =========================================================
+   STATEMENT
+========================================================= */
+
+.statement{
+  padding:180px 7%;
+  background:#0e0e0e;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.statement::before{
+  content:"ES";
+  position:absolute;
+  font-family:'Playfair Display',serif;
+  font-size:45vw;
+  color:rgba(255,255,255,.012);
+  line-height:.7;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+
+.statement-content{
+  position:relative;
+  z-index:2;
+}
+
+.statement-label{
+  color:#666;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  margin-bottom:35px;
+}
+
+.statement h2{
+  max-width:1100px;
+  margin:auto;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(48px,7vw,105px);
+  line-height:.91;
+  font-weight:400;
+  letter-spacing:-4px;
+}
+
+.statement h2 em{
+  font-style:italic;
+}
+
+.statement p{
+  max-width:500px;
+  margin:40px auto 0;
+  color:#666;
+  font-size:11px;
+  line-height:2;
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonials{
+  padding:140px 7%;
+  background:var(--cream);
+  color:#111;
+}
+
+.testimonials .section-label{
+  color:#777;
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:70px;
+  border-top:1px solid #ccc;
+}
+
+.testimonial{
+  padding:45px 35px 45px 0;
+  border-right:1px solid #ccc;
+  margin-right:35px;
+}
+
+.testimonial:last-child{
+  border-right:0;
+  margin-right:0;
+}
+
+.quote{
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  line-height:1.35;
+}
+
+.quote em{
+  font-style:italic;
+}
+
+.client{
+  margin-top:35px;
+  color:#777;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+  padding:160px 7%;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:100px;
+  align-items:end;
+}
+
+.contact h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(60px,9vw,130px);
+  line-height:.82;
+  font-weight:400;
+  letter-spacing:-6px;
+}
+
+.contact h2 em{
+  font-style:italic;
+}
+
+.contact-copy{
+  color:#777;
+  font-size:11px;
+  line-height:2;
+  max-width:350px;
+}
+
+.contact-details{
+  margin-top:40px;
+}
+
+.contact-detail{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  padding:16px 0;
+  border-bottom:1px solid #222;
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+.contact-detail span:first-child{
+  color:#555;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.contact-detail span:last-child{
+  color:#bbb;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:70px 7% 30px;
+  border-top:1px solid #222;
+}
+
+.footer-main{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:55px;
+  line-height:1;
+}
+
+.footer-tagline{
+  margin-top:15px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.footer-links{
+  display:flex;
+  gap:35px;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#666;
+}
+
+.footer-links a:hover{
+  color:white;
+}
+
+.footer-bottom{
+  margin-top:75px;
+  padding-top:25px;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-between;
+  color:#444;
+  font-size:8px;
+  letter-spacing:1px;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:#090909;
+  z-index:1500;
+  padding:130px 7%;
+  transform:translateX(100%);
+  transition:.5s cubic-bezier(.7,0,.2,1);
+}
+
+.mobile-menu.active{
+  transform:translateX(0);
+}
+
+.mobile-menu a{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:55px;
+  padding:13px 0;
+  border-bottom:1px solid #222;
+}
+
+.mobile-menu-close{
+  position:absolute;
+  top:30px;
+  right:7%;
+  background:none;
+  border:0;
+  color:white;
+  font-size:30px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .cursor,
+  .cursor-ring{
+    display:none;
+  }
+
+  .nav{
+    height:75px;
+    padding:0 5%;
+  }
+
+  .nav-links,
+  .nav-availability{
+    display:none;
+  }
+
+  .nav-cta{
+    gap:12px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .hero{
+    padding:145px 5% 80px;
+  }
+
+  .hero h1{
+    font-size:19vw;
+    letter-spacing:-3px;
+  }
+
+  .hero h1 em{
+    margin-left:0;
+  }
+
+  .hero-bottom{
+    display:block;
+    margin-top:45px;
+  }
+
+  .hero-actions{
+    margin-top:30px;
+  }
+
+  .intro{
+    padding:85px 5%;
+  }
+
+  .intro-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .intro-text{
+    display:block;
+  }
+
+  .intro-signature{
+    margin-top:30px;
+  }
+
+  .work,
+  .services,
+  .process,
+  .testimonials,
+  .contact{
+    padding:95px 5%;
+  }
+
+  .section-heading,
+  .services-heading,
+  .process-heading{
+    display:block;
+  }
+
+  .section-description,
+  .services-intro{
+    margin-top:25px;
+  }
+
+  .project,
+  .project:nth-of-type(even){
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
+
+  .project:nth-of-type(even) .project-image{
+    order:0;
+  }
+
+  .project-image{
+    min-height:450px;
+  }
+
+  .project-info{
+    min-height:400px;
+    padding:40px 25px;
+  }
+
+  .project-info::before{
+    left:25px;
+    top:25px;
+  }
+
+  .project-meta{
+    top:25px;
+    right:25px;
+  }
+
+  .services-title{
+    font-size:17vw;
+  }
+
+  .service{
+    grid-template-columns:45px 1fr 25px;
+    gap:15px;
+  }
+
+  .service p{
+    display:none;
+  }
+
+  .process-step{
+    grid-template-columns:50px 1fr 25px;
+  }
+
+  .process-step p{
+    display:none;
+  }
+
+  .testimonial-grid{
+    grid-template-columns:1fr;
+  }
+
+  .testimonial{
+    border-right:0;
+    border-bottom:1px solid #ccc;
+    margin:0;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .contact h2{
+    font-size:19vw;
+    letter-spacing:-3px;
+  }
+
+  .footer-main{
+    display:block;
+  }
+
+  .footer-links{
+    margin-top:35px;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+
+  .footer-bottom{
+    display:block;
+    line-height:2;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .hero-actions{
+    display:block;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    margin-bottom:10px;
+  }
+
+  .project-image{
+    min-height:380px;
+  }
+
+  .project-name{
+    font-size:45px;
+  }
+
+  .statement{
+    padding:110px 5%;
+  }
+
+  .testimonial{
+    padding-right:0;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PRELOADER
+===================================================== -->
+
+<div class="loader">
+
+  <div class="loader-inner">
+
+    <div class="loader-brand">
+      ES CREATION
+    </div>
+
+    <div class="loader-line"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="nav" id="nav">
+
+  <a href="#" class="logo">
+    ES <span>CREATION</span>
+  </a>
+
+  <nav class="nav-links">
+
+    <a href="#work">Work</a>
+
+    <a href="#services">Services</a>
+
+    <a href="#process">Process</a>
+
+    <a href="#contact">Contact</a>
+
+  </nav>
+
+  <div class="nav-cta">
+
+    <span class="nav-availability">
+      Available for select projects
+    </span>
+
+    <a href="#contact" class="nav-contact">
+      Start a project
+    </a>
+
+    <button
+      class="menu-btn"
+      onclick="openMobileMenu()">
+      ☰
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <button
+    class="mobile-menu-close"
+    onclick="closeMobileMenu()">
+    ×
+  </button>
+
+  <a href="#work" onclick="closeMobileMenu()">
+    Work
+  </a>
+
+  <a href="#services" onclick="closeMobileMenu()">
+    Services
+  </a>
+
+  <a href="#process" onclick="closeMobileMenu()">
+    Process
+  </a>
+
+  <a href="#contact" onclick="closeMobileMenu()">
+    Contact
+  </a>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-topline">
+
+      <span class="hero-dot"></span>
+
+      Independent Digital Studio
+
+      <span>—</span>
+
+      Europe
+
+    </div>
+
+    <h1>
+
+      Digital<br>
+
+      <em>presence.</em>
+
+    </h1>
+
+    <div class="hero-bottom">
+
+      <div class="hero-copy">
+
+        <p>
+          ES CREATION designs and builds refined digital
+          experiences for businesses and brands that care
+          about how they are perceived.
+        </p>
+
+      </div>
+
+      <div class="hero-actions">
+
+        <a href="#work" class="btn btn-light">
+          Explore selected work →
+        </a>
+
+        <a href="#contact" class="btn">
+          Let's talk
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="hero-index">
+    ES / 001
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro">
+
+  <div class="intro-grid">
+
+    <div class="section-label">
+      01 — The Studio
+    </div>
+
+    <div class="intro-content">
+
+      <h2>
+        Websites should feel<br>
+        <em>as good as they look.</em>
+      </h2>
+
+      <div class="intro-text">
+
+        <p>
+          ES CREATION is an independent digital studio focused
+          on premium websites, visual identity and digital
+          experiences. The goal is simple: make your business
+          look established, credible and impossible to ignore.
+        </p>
+
+        <div class="intro-signature">
+          ES — Creative Direction
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="gold-line"></div>
+
+
+<!-- =====================================================
+     SELECTED WORK
+===================================================== -->
+
+<section class="work" id="work">
+
+  <div class="section-heading">
+
+    <div class="section-heading-left">
+
+      <div class="section-label">
+        02 — Selected Work
+      </div>
+
+      <h2 class="section-title">
+        Made to<br>
+        <em>be noticed.</em>
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      Concept projects created to demonstrate how
+      thoughtful design can transform a digital presence.
+    </p>
+
+  </div>
+
+
+  <!-- PROJECT 01 -->
+
+  <article class="project">
+
+    <div class="project-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1800&q=90"
+        alt="BLACKLINE premium barber concept">
+
+      <div class="project-number">
+        001 / 003
+      </div>
+
+      <div class="project-location">
+        Grooming / Luxury
+      </div>
+
+    </div>
+
+    <div class="project-info">
+
+      <div class="project-meta">
+        Concept / 2026
+      </div>
+
+      <div class="project-category">
+        Hospitality — Grooming
+      </div>
+
+      <h3 class="project-name">
+        BLACKLINE<br>
+        <em>Barbers.</em>
+      </h3>
+
+      <p class="project-description">
+        A sophisticated digital home for a modern men's
+        grooming brand. Dark tones, strong typography and
+        conversion-focused booking experiences.
+      </p>
+
+      <a
+        href="../barber/index.html"
+        class="project-link">
+
+        View project
+
+        <span>→</span>
+
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <!-- PROJECT 02 -->
+
+  <article class="project">
+
+    <div class="project-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=90"
+        alt="LA TAVOLA restaurant concept">
+
+      <div class="project-number">
+        002 / 003
+      </div>
+
+      <div class="project-location">
+        Dining / Hospitality
+      </div>
+
+    </div>
+
+    <div class="project-info">
+
+      <div class="project-meta">
+        Concept / 2026
+      </div>
+
+      <div class="project-category">
+        Hospitality — Restaurant
+      </div>
+
+      <h3 class="project-name">
+        LA<br>
+        <em>Tavola.</em>
+      </h3>
+
+      <p class="project-description">
+        An editorial restaurant experience built around
+        atmosphere, storytelling and effortless reservation
+        journeys.
+      </p>
+
+      <a
+        href="../restaurant/index.html"
+        class="project-link">
+
+        View project
+
+        <span>→</span>
+
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <!-- PROJECT 03 -->
+
+  <article class="project">
+
+    <div class="project-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=90"
+        alt="NOIRÉ luxury fashion concept">
+
+      <div class="project-number">
+        003 / 003
+      </div>
+
+      <div class="project-location">
+        Fashion / E-Commerce
+      </div>
+
+    </div>
+
+    <div class="project-info">
+
+      <div class="project-meta">
+        Concept / 2026
+      </div>
+
+      <div class="project-category">
+        Fashion — E-Commerce
+      </div>
+
+      <h3 class="project-name">
+        NOIRÉ<br>
+        <em>Maison.</em>
+      </h3>
+
+      <p class="project-description">
+        A high-fashion e-commerce concept combining
+        cinematic imagery, editorial typography and
+        an understated shopping experience.
+      </p>
+
+      <a
+        href="../clothing/index.html"
+        class="project-link">
+
+        View project
+
+        <span>→</span>
+
+      </a>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="services" id="services">
+
+  <div class="services-heading">
+
+    <div>
+
+      <div class="section-label">
+        03 — Capabilities
+      </div>
+
+      <h2 class="services-title">
+        What we<br>
+        <em>create.</em>
+      </h2>
+
+    </div>
+
+    <p class="services-intro">
+      From first impression to final interaction,
+      every detail is designed to make your business
+      feel more premium online.
+    </p>
+
+  </div>
+
+
+  <div class="service-list">
+
+    <div class="service">
+
+      <div class="service-number">
+        01
+      </div>
+
+      <h3>
+        Premium Websites
+      </h3>
+
+      <p>
+        High-end websites designed around your
+        business, audience and visual identity.
+      </p>
+
+      <div class="service-arrow">
+        ↗
+      </div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">
+        02
+      </div>
+
+      <h3>
+        Brand Websites
+      </h3>
+
+      <p>
+        Digital homes that translate your brand
+        personality into a refined online experience.
+      </p>
+
+      <div class="service-arrow">
+        ↗
+      </div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">
+        03
+      </div>
+
+      <h3>
+        E-Commerce
+      </h3>
+
+      <p>
+        Product-focused experiences built to make
+        browsing, discovering and buying feel effortless.
+      </p>
+
+      <div class="service-arrow">
+        ↗
+      </div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">
+        04
+      </div>
+
+      <h3>
+        Digital Refresh
+      </h3>
+
+      <p>
+        Transform an outdated website into something
+        modern, credible and conversion-focused.
+      </p>
+
+      <div class="service-arrow">
+        ↗
+      </div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">
+        05
+      </div>
+
+      <h3>
+        Mobile Experiences
+      </h3>
+
+      <p>
+        Responsive layouts designed to look beautiful
+        across phones, tablets and desktop screens.
+      </p>
+
+      <div class="service-arrow">
+        ↗
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROCESS
+===================================================== -->
+
+<section class="process" id="process">
+
+  <div class="process-heading">
+
+    <div>
+
+      <div class="section-label">
+        04 — Process
+      </div>
+
+      <h2 class="section-title">
+        From idea<br>
+        to <em>impact.</em>
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="process-list">
+
+    <div class="process-step">
+
+      <div class="process-number">
+        01
+      </div>
+
+      <h3>
+        Discover
+      </h3>
+
+      <p>
+        We understand your business, your audience,
+        your goals and what makes you different.
+      </p>
+
+      <div>
+        →
+      </div>
+
+    </div>
+
+
+    <div class="process-step">
+
+      <div class="process-number">
+        02
+      </div>
+
+      <h3>
+        Direction
+      </h3>
+
+      <p>
+        We establish the visual direction, structure,
+        content hierarchy and overall experience.
+      </p>
+
+      <div>
+        →
+      </div>
+
+    </div>
+
+
+    <div class="process-step">
+
+      <div class="process-number">
+        03
+      </div>
+
+      <h3>
+        Design
+      </h3>
+
+      <p>
+        Every section, interaction and visual detail
+        is shaped around your brand.
+      </p>
+
+      <div>
+        →
+      </div>
+
+    </div>
+
+
+    <div class="process-step">
+
+      <div class="process-number">
+        04
+      </div>
+
+      <h3>
+        Build
+      </h3>
+
+      <p>
+        The final experience is developed responsively
+        and tested across modern devices.
+      </p>
+
+      <div>
+        →
+      </div>
+
+    </div>
+
+
+    <div class="process-step">
+
+      <div class="process-number">
+        05
+      </div>
+
+      <h3>
+        Launch
+      </h3>
+
+      <p>
+        Your new digital presence is prepared for launch
+        and ready to meet your customers.
+      </p>
+
+      <div>
+        →
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATEMENT
+===================================================== -->
+
+<section class="statement">
+
+  <div class="statement-content">
+
+    <div class="statement-label">
+      The ES Standard
+    </div>
+
+    <h2>
+      Good design gets attention.<br>
+      <em>Great design gets remembered.</em>
+    </h2>
+
+    <p>
+      We don't believe your website should simply
+      “exist”. It should communicate quality before
+      a customer ever speaks to you.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section class="testimonials">
+
+  <div class="section-label">
+    05 — Words
+  </div>
+
+  <h2 class="section-title" style="margin-top:17px;">
+    The kind of<br>
+    <em>experience we aim for.</em>
+  </h2>
+
+
+  <div class="testimonial-grid">
+
+    <div class="testimonial">
+
+      <div class="quote">
+        “The website completely changed the way
+        the brand feels online.”
+      </div>
+
+      <div class="client">
+        Concept Client — Fashion
+      </div>
+
+    </div>
+
+
+    <div class="testimonial">
+
+      <div class="quote">
+        “Clean, premium and incredibly easy to use.
+        Exactly the impression we wanted.”
+      </div>
+
+      <div class="client">
+        Concept Client — Hospitality
+      </div>
+
+    </div>
+
+
+    <div class="testimonial">
+
+      <div class="quote">
+        “It finally feels like our business has a
+        digital presence that matches the quality.”
+      </div>
+
+      <div class="client">
+        Concept Client — Grooming
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact" id="contact">
+
+  <div class="contact-grid">
+
+    <div>
+
+      <div class="section-label">
+        06 — Start a Project
+      </div>
+
+      <h2>
+        Let's make<br>
+        something<br>
+        <em>remarkable.</em>
+      </h2>
+
+    </div>
+
+
+    <div>
+
+      <p class="contact-copy">
+        Have a business that deserves a stronger
+        digital presence? Tell us a little about it
+        and let's start a conversation.
+      </p>
+
+
+      <div class="contact-details">
+
+        <div class="contact-detail">
+
+          <span>Email</span>
+
+          <span>
+            hello@escreation.studio
+          </span>
+
+        </div>
+
+
+        <div class="contact-detail">
+
+          <span>Based</span>
+
+          <span>
+            Europe
+          </span>
+
+        </div>
+
+
+        <div class="contact-detail">
+
+          <span>Projects</span>
+
+          <span>
+            Selective / 2026
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="mailto:hello@escreation.studio"
+        class="btn btn-light"
+        style="margin-top:35px;">
+
+        Start a conversation →
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <div class="footer-main">
+
+    <div>
+
+      <div class="footer-logo">
+        ES CREATION
+      </div>
+
+      <div class="footer-tagline">
+        Digital experiences with presence.
+      </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#process">
+        Process
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 ES CREATION
+    </span>
+
+    <span>
+      Independent Digital Studio
+    </span>
+
+  </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* NAV SCROLL */
+
+const nav = document.getElementById("nav");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 50){
+
+    nav.classList.add("scrolled");
+
+  }else{
+
+    nav.classList.remove("scrolled");
+
+  }
+
+});
+
+
+/* CUSTOM CURSOR */
+
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+
+if(window.innerWidth > 900){
+
+  document.addEventListener("mousemove", (e) => {
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+    setTimeout(() => {
+
+      cursorRing.style.left = e.clientX + "px";
+      cursorRing.style.top = e.clientY + "px";
+
+    },40);
+
+  });
+
+
+  document
+    .querySelectorAll("a,button,.project")
+    .forEach(el => {
+
+      el.addEventListener("mouseenter", () => {
+
+        cursorRing.classList.add("big");
+
+      });
+
+      el.addEventListener("mouseleave", () => {
+
+        cursorRing.classList.remove("big");
+
+      });
+
+    });
+
+}
+
+
+/* MOBILE MENU */
+
+function openMobileMenu(){
+
+  document
+    .getElementById("mobileMenu")
+    .classList.add("active");
+
+  document.body.classList.add("locked");
+
+}
+
+
+function closeMobileMenu(){
+
+  document
+    .getElementById("mobileMenu")
+    .classList.remove("active");
+
+  document.body.classList.remove("locked");
+
+}
+
+
+/* ESCAPE */
+
+document.addEventListener("keydown", (event) => {
+
+  if(event.key === "Escape"){
+
+    closeMobileMenu();
+
+  }
+
+});
+
+</script>
+
+
+</body>
+</html>
+```
+
