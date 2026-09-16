@@ -2,1060 +2,1376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>La Tavola | Italian Restaurant</title>
-
-    <style>
-        /* =========================
-           GLOBAL
-        ========================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: #10100f;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            color: inherit;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 20px 8%;
-
-            background: rgba(10, 10, 10, 0.88);
-            backdrop-filter: blur(12px);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: #d6a84f;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            transition: 0.3s;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-
-        .nav-links a:hover {
-            color: #d6a84f;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-
-            padding: 120px 8% 80px;
-
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.55),
-                    rgba(0, 0, 0, 0.80)
-                ),
-                url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=2000&q=85");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            max-width: 720px;
-            animation: fadeUp 1s ease;
-        }
-
-        .eyebrow {
-            color: #d6a84f;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-family: Arial, sans-serif;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 8vw, 100px);
-            line-height: 0.95;
-            margin-bottom: 25px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            color: #ddd;
-            font-size: 20px;
-            margin-bottom: 35px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-block;
-
-            padding: 15px 28px;
-
-            border-radius: 5px;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            background: #d6a84f;
-            color: #111;
-
-            transition: 0.3s;
-
-            font-family: Arial, sans-serif;
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            background: white;
-        }
-
-        .button-outline {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-        }
-
-        .button-outline:hover {
-            background: white;
-            color: #111;
-        }
-
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #999;
-            margin-bottom: 50px;
-            font-family: Arial, sans-serif;
-        }
-
-
-        /* =========================
-           MENU
-        ========================= */
-
-        #menu {
-            background: #10100f;
-        }
-
-        .menu {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px 50px;
-
-            max-width: 1050px;
-            margin: auto;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-
-            padding: 25px 0;
-
-            border-bottom: 1px solid #333;
-        }
-
-        .menu-item h3 {
-            margin-bottom: 6px;
-            font-size: 21px;
-        }
-
-        .menu-item p {
-            color: #999;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            max-width: 430px;
-        }
-
-        .menu-price {
-            color: #d6a84f;
-            font-size: 20px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            background: #181817;
-        }
-
-        .about-container {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .about p {
-            color: #bbb;
-            font-size: 19px;
-        }
-
-
-        /* =========================
-           FEATURES
-        ========================= */
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-
-            margin-top: 60px;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .feature h3 {
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            color: #999;
-            font-family: Arial, sans-serif;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           GALLERY
-        ========================= */
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-
-            border-radius: 8px;
-
-            transition: 0.4s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
-
-
-        /* =========================
-           REVIEWS
-        ========================= */
-
-        .reviews {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .review {
-            background: #181817;
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid #292929;
-        }
-
-        .stars {
-            color: #d6a84f;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .review p {
-            color: #ccc;
-            font-family: Arial, sans-serif;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-
-        .customer {
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           RESERVATION
-        ========================= */
-
-        .reservation {
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.70),
-                    rgba(0, 0, 0, 0.75)
-                ),
-                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .reservation p {
-            color: #ddd;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact-info {
-            margin-bottom: 30px;
-            font-family: Arial, sans-serif;
-        }
-
-        .contact-info p {
-            margin: 8px;
-            color: #bbb;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-            padding: 30px;
-
-            background: #080808;
-
-            color: #777;
-
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-
-
-        /* =========================
-           ANIMATION
-        ========================= */
-
-        @keyframes fadeUp {
-
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .menu {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .reviews {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-
-        @media (max-width: 600px) {
-
-            nav {
-                padding: 18px 5%;
-            }
-
-            .nav-links a {
-                margin-left: 8px;
-                font-size: 11px;
-            }
-
-            section {
-                padding: 70px 5%;
-            }
-
-            .hero {
-                padding: 120px 5% 70px;
-            }
-
-            .hero h1 {
-                font-size: 58px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .section-title {
-                font-size: 38px;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery img {
-                height: 250px;
-            }
-
-            .menu-item {
-                gap: 10px;
-            }
-
-            .menu-item h3 {
-                font-size: 18px;
-            }
-
-            .menu-price {
-                font-size: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ES CREATION — Independent Digital Studio</title>
+
+<meta name="description" content="ES CREATION creates premium websites and digital experiences for ambitious businesses.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f4f1ea;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* =========================
+   PRELOADER
+========================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #080808;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-inner {
+    text-align: center;
+}
+
+.loader-logo {
+    font-size: 28px;
+    letter-spacing: 8px;
+    font-weight: 700;
+}
+
+.loader-line {
+    width: 120px;
+    height: 1px;
+    background: #c8a96b;
+    margin: 20px auto;
+    animation: loadLine 1.5s ease infinite;
+}
+
+@keyframes loadLine {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+/* =========================
+   CURSOR
+========================= */
+
+.cursor {
+    width: 10px;
+    height: 10px;
+    background: #c8a96b;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s linear;
+}
+
+.cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(200,169,107,0.7);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 6%;
+
+    transition: 0.4s ease;
+}
+
+nav.scrolled {
+    background: rgba(8,8,8,0.88);
+    backdrop-filter: blur(16px);
+    padding: 17px 6%;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #c8a96b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-contact {
+    border-bottom: 1px solid #c8a96b;
+    padding-bottom: 4px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 150px 6% 100px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,8,8,0.95) 0%,
+            rgba(8,8,8,0.70) 45%,
+            rgba(8,8,8,0.25) 100%
+        ),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.eyebrow {
+    color: #c8a96b;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 10vw, 150px);
+    line-height: 0.86;
+    letter-spacing: -5px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.hero h1 span {
+    color: #c8a96b;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero-description {
+    max-width: 600px;
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 45px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 16px 28px;
+    border: 1px solid #c8a96b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    transition: 0.35s;
+}
+
+.btn-primary {
+    background: #c8a96b;
+    color: #080808;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+.btn-primary:hover {
+    background: #fff;
+    border-color: #fff;
+}
+
+.btn-outline:hover {
+    background: #c8a96b;
+    color: #080808;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    padding: 150px 6%;
+    background: #f4f1ea;
+    color: #111;
+}
+
+.intro-grid {
+    max-width: 1250px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 100px;
+}
+
+.small-label {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    color: #777;
+}
+
+.intro h2 {
+    font-size: clamp(45px, 6vw, 85px);
+    line-height: 0.95;
+    margin-top: 20px;
+    letter-spacing: -3px;
+}
+
+.intro h2 span {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.intro-text {
+    align-self: end;
+}
+
+.intro-text p {
+    font-size: 21px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   WORK
+========================= */
+
+.work {
+    padding: 150px 6%;
+    background: #080808;
+}
+
+.section-header {
+    max-width: 1250px;
+    margin: 0 auto 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+}
+
+.section-number {
+    color: #c8a96b;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.section-title {
+    font-size: clamp(45px, 6vw, 90px);
+    line-height: 0.9;
+    letter-spacing: -3px;
+    margin-top: 15px;
+}
+
+.section-description {
+    max-width: 400px;
+    color: #888;
+    font-size: 15px;
+}
+
+.projects {
+    max-width: 1250px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px 30px;
+}
+
+.project {
+    position: relative;
+}
+
+.project-image {
+    height: 550px;
+    overflow: hidden;
+    background: #151515;
+    position: relative;
+}
+
+.project-image img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.project:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.65),
+        transparent 55%
+    );
+}
+
+.project-number {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+.project-info {
+    padding-top: 22px;
+}
+
+.project-info h3 {
+    font-size: 29px;
+    margin-bottom: 7px;
+}
+
+.project-info p {
+    color: #888;
+    font-size: 13px;
+}
+
+.project-link {
+    margin-top: 15px;
+    display: inline-block;
+    color: #c8a96b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   CAPABILITIES
+========================= */
+
+.capabilities {
+    padding: 150px 6%;
+    background: #111;
+}
+
+.capabilities-inner {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.capabilities-list {
+    margin-top: 70px;
+    border-top: 1px solid #333;
+}
+
+.capability {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+
+    padding: 35px 0;
+    border-bottom: 1px solid #333;
+
+    transition: 0.3s;
+}
+
+.capability:hover {
+    padding-left: 15px;
+}
+
+.capability-number {
+    color: #c8a96b;
+    font-size: 12px;
+}
+
+.capability h3 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.capability p {
+    color: #888;
+    font-size: 14px;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.process {
+    padding: 150px 6%;
+    background: #f4f1ea;
+    color: #111;
+}
+
+.process-inner {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.process-grid {
+    margin-top: 70px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.process-card {
+    border-top: 1px solid #aaa;
+    padding-top: 25px;
+}
+
+.process-number {
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 2px;
+}
+
+.process-card h3 {
+    font-size: 25px;
+    margin: 30px 0 15px;
+}
+
+.process-card p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* =========================
+   STANDARD
+========================= */
+
+.standard {
+    padding: 170px 6%;
+    text-align: center;
+    background:
+        linear-gradient(
+            rgba(8,8,8,0.85),
+            rgba(8,8,8,0.95)
+        ),
+        url("https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2200&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.standard-content {
+    max-width: 950px;
+    margin: auto;
+}
+
+.standard h2 {
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+}
+
+.standard h2 span {
+    color: #c8a96b;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.standard p {
+    max-width: 650px;
+    margin: 35px auto 0;
+    color: #aaa;
+    font-size: 17px;
+}
+
+/* =========================
+   TESTIMONIAL
+========================= */
+
+.testimonials {
+    padding: 140px 6%;
+    background: #080808;
+}
+
+.testimonial-grid {
+    max-width: 1050px;
+    margin: 70px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.testimonial {
+    padding: 40px;
+    border: 1px solid #292929;
+    background: #101010;
+}
+
+.testimonial p {
+    color: #ccc;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.testimonial-name {
+    color: #c8a96b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    padding: 170px 6%;
+    background: #c8a96b;
+    color: #080808;
+}
+
+.contact-inner {
+    max-width: 1250px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: end;
+}
+
+.contact h2 {
+    font-size: clamp(60px, 9vw, 130px);
+    line-height: 0.82;
+    letter-spacing: -5px;
+}
+
+.contact h2 span {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.contact-text p {
+    font-size: 20px;
+    max-width: 450px;
+    margin-bottom: 35px;
+}
+
+.contact-email {
+    font-size: clamp(20px, 3vw, 34px);
+    border-bottom: 1px solid #080808;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 45px 6%;
+    background: #080808;
+    color: #777;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    color: #fff;
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .cursor,
+    .cursor-ring {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #080808;
+        padding: 25px 6%;
+        flex-direction: column;
+        gap: 20px;
+        border-bottom: 1px solid #222;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-image {
+        height: 500px;
+    }
+
+    .capability {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+    }
+
+    .capability p {
+        grid-column: 2;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 20px 5%;
+    }
+
+    .hero {
+        padding: 140px 5% 80px;
+        min-height: 95vh;
+    }
+
+    .hero h1 {
+        font-size: 64px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .intro,
+    .work,
+    .capabilities,
+    .process,
+    .standard,
+    .testimonials,
+    .contact {
+        padding: 100px 5%;
+    }
+
+    .section-title {
+        font-size: 52px;
+    }
+
+    .project-image {
+        height: 420px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact h2 {
+        font-size: 65px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
 </head>
 
+<body class="loading">
 
-<body>
+<!-- =========================
+     LOADER
+========================= -->
 
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <div class="loader-logo">ES CREATION</div>
+        <div class="loader-line"></div>
+    </div>
+</div>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <nav>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-        <div class="logo">
-            LA <span>TAVOLA</span>
+<nav id="navbar">
+
+    <a href="#top" class="logo">
+        ES <span>CREATION</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#work">Work</a>
+        <a href="#capabilities">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact" class="nav-contact">Start a Project</a>
+    </div>
+
+    <button class="menu-button" id="menuButton">
+        ☰
+    </button>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="top">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Independent Digital Studio
         </div>
 
-        <div class="nav-links">
+        <h1>
+            Digital<br>
+            experiences<br>
+            with <span>presence.</span>
+        </h1>
 
-            <a href="#menu">Menu</a>
-
-            <a href="#about">About</a>
-
-            <a href="#gallery">Gallery</a>
-
-            <a href="#reviews">Reviews</a>
-
-            <a href="#contact">Contact</a>
-
-        </div>
-
-    </nav>
-
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                Authentic Italian Cuisine
-            </div>
-
-            <h1>
-                Taste Italy.<br>
-                Love Every Bite.
-            </h1>
-
-            <p>
-                Fresh ingredients, traditional recipes and unforgettable
-                flavours. Welcome to La Tavola.
-            </p>
-
-            <div class="buttons">
-
-                <a href="#reservation" class="button">
-                    Reserve A Table
-                </a>
-
-                <a href="#menu" class="button button-outline">
-                    Explore Menu
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         MENU
-    ========================== -->
-
-    <section id="menu">
-
-        <h2 class="section-title">
-            Our Menu
-        </h2>
-
-        <p class="section-subtitle">
-            Simple ingredients. Big flavours.
+        <p class="hero-description">
+            ES CREATION designs premium websites for businesses that
+            want to look established, credible and impossible to ignore.
         </p>
 
+        <div class="hero-buttons">
 
-        <div class="menu">
+            <a href="#work" class="btn btn-primary">
+                Explore Work
+            </a>
 
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Margherita Pizza</h3>
-
-                    <p>
-                        San Marzano tomato, mozzarella, basil and olive oil.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €14
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Truffle Pasta</h3>
-
-                    <p>
-                        Fresh pasta, black truffle, parmesan and cream.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €22
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Bruschetta</h3>
-
-                    <p>
-                        Grilled bread, tomatoes, garlic, basil and olive oil.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €9
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Lasagna della Casa</h3>
-
-                    <p>
-                        Homemade pasta, beef ragu, mozzarella and parmesan.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €18
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Grilled Sea Bass</h3>
-
-                    <p>
-                        Fresh sea bass, lemon, herbs and seasonal vegetables.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €26
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Tiramisu</h3>
-
-                    <p>
-                        Classic Italian dessert with mascarpone and espresso.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €8
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Gnocchi al Pesto</h3>
-
-                    <p>
-                        Homemade potato gnocchi, basil pesto and parmesan.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €17
-                </div>
-
-            </div>
-
-
-            <div class="menu-item">
-
-                <div>
-                    <h3>Risotto ai Funghi</h3>
-
-                    <p>
-                        Creamy Arborio rice with wild mushrooms and parmesan.
-                    </p>
-                </div>
-
-                <div class="menu-price">
-                    €19
-                </div>
-
-            </div>
+            <a href="#contact" class="btn btn-outline">
+                Start a Project
+            </a>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- =========================
+     INTRO
+========================= -->
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+<section class="intro">
 
-    <section id="about" class="about">
+    <div class="intro-grid">
 
-        <div class="about-container">
+        <div>
 
-            <h2 class="section-title">
-                Our Story
+            <div class="small-label">
+                01 — Philosophy
+            </div>
+
+            <h2>
+                Websites should feel
+                <span>valuable.</span>
             </h2>
 
+        </div>
+
+        <div class="intro-text">
+
             <p>
-                La Tavola brings the warmth and flavours of Italy to your table.
-                We believe great food starts with great ingredients, traditional
-                techniques and a passion for hospitality.
+                A website is more than a digital business card.
+                It is often the first impression a customer gets.
             </p>
 
-
-            <div class="features">
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">
-                        🍅
-                    </div>
-
-                    <h3>
-                        Fresh Ingredients
-                    </h3>
-
-                    <p>
-                        Carefully selected ingredients every day.
-                    </p>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">
-                        👨‍🍳
-                    </div>
-
-                    <h3>
-                        Traditional Recipes
-                    </h3>
-
-                    <p>
-                        Authentic recipes inspired by Italy.
-                    </p>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">
-                        ❤️
-                    </div>
-
-                    <h3>
-                        Made With Love
-                    </h3>
-
-                    <p>
-                        Every dish prepared with passion.
-                    </p>
-
-                </div>
-
-
-            </div>
+            <p>
+                ES CREATION focuses on clean visual direction,
+                strong structure, mobile-first experiences and
+                websites designed to make businesses look ready
+                for their next level.
+            </p>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- =========================
+     WORK
+========================= -->
 
-    <!-- =========================
-         GALLERY
-    ========================== -->
+<section class="work" id="work">
 
-    <section id="gallery">
+    <div class="section-header">
 
-        <h2 class="section-title">
-            A Taste Of La Tavola
-        </h2>
+        <div>
 
-        <p class="section-subtitle">
-            Good food deserves to look this good.
+            <div class="section-number">
+                02 — Selected Work
+            </div>
+
+            <h2 class="section-title">
+                Built to<br>
+                <span>stand out.</span>
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Concept websites created by ES CREATION to demonstrate
+            different visual directions and industries.
         </p>
 
+    </div>
 
-        <div class="gallery">
 
-            <img
-                src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=85"
-                alt="Italian pizza"
-            >
+    <div class="projects">
 
-            <img
-                src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=85"
-                alt="Fresh pasta"
-            >
+        <!-- BARBER -->
 
-            <img
-                src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1000&q=85"
-                alt="Fresh Italian food"
-            >
+        <article class="project">
 
-            <img
-                src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1000&q=85"
-                alt="Restaurant interior"
-            >
+            <a href="/barber/">
 
-            <img
-                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85"
-                alt="Restaurant dining"
-            >
+                <div class="project-image">
 
-            <img
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=85"
-                alt="Italian pizza"
-            >
+                    <img
+                        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85"
+                        alt="Premium barber studio"
+                    >
 
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        01 / BEAUTY
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <h3>BLACKLINE BARBERS</h3>
+
+                    <p>
+                        Premium barber studio concept — dark,
+                        masculine and conversion focused.
+                    </p>
+
+                    <span class="project-link">
+                        View Project →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </article>
+
+
+        <!-- RESTAURANT -->
+
+        <article class="project">
+
+            <a href="/restaurant/">
+
+                <div class="project-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85"
+                        alt="Luxury restaurant interior"
+                    >
+
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        02 / HOSPITALITY
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <h3>LA TAVOLA</h3>
+
+                    <p>
+                        Italian restaurant concept focused on atmosphere,
+                        storytelling and reservations.
+                    </p>
+
+                    <span class="project-link">
+                        View Project →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </article>
+
+
+        <!-- CLOTHING -->
+
+        <article class="project">
+
+            <a href="/clothing/">
+
+                <div class="project-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1400&q=85"
+                        alt="Luxury fashion collection"
+                    >
+
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        03 / FASHION
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+
+                    <h3>NOIRÉ MAISON</h3>
+
+                    <p>
+                        Luxury fashion concept built around
+                        editorial visuals and premium positioning.
+                    </p>
+
+                    <span class="project-link">
+                        View Project →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </article>
+
+
+        <!-- STUDIO -->
+
+        <article class="project">
+
+            <div class="project-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=85"
+                    alt="Modern creative studio"
+                >
+
+                <div class="project-overlay"></div>
+
+                <div class="project-number">
+                    04 / STUDIO
+                </div>
+
+            </div>
+
+            <div class="project-info">
+
+                <h3>THE STUDIO</h3>
+
+                <p>
+                    A visual direction for a modern creative business.
+                </p>
+
+                <span class="project-link">
+                    Concept Preview
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CAPABILITIES
+========================= -->
+
+<section class="capabilities" id="capabilities">
+
+    <div class="capabilities-inner">
+
+        <div class="section-number">
+            03 — Capabilities
         </div>
 
-    </section>
-
-
-
-    <!-- =========================
-         REVIEWS
-    ========================== -->
-
-    <section id="reviews">
-
         <h2 class="section-title">
-            What Our Guests Say
+            What we<br>
+            <span>create.</span>
         </h2>
 
-        <p class="section-subtitle">
-            An experience worth coming back for.
-        </p>
+        <div class="capabilities-list">
 
+            <div class="capability">
 
-        <div class="reviews">
-
-
-            <div class="review">
-
-                <div class="stars">
-                    ★★★★★
+                <div class="capability-number">
+                    01
                 </div>
+
+                <h3>Premium Websites</h3>
 
                 <p>
-                    "The pasta was incredible and the atmosphere was beautiful.
-                    One of the best Italian restaurants we've visited."
+                    Custom visual direction, responsive layouts
+                    and polished presentation for modern businesses.
                 </p>
-
-                <div class="customer">
-                    — Sofia
-                </div>
 
             </div>
 
 
-            <div class="review">
+            <div class="capability">
 
-                <div class="stars">
-                    ★★★★★
+                <div class="capability-number">
+                    02
                 </div>
+
+                <h3>Landing Pages</h3>
 
                 <p>
-                    "Amazing food, friendly service and a really warm atmosphere.
-                    We'll definitely be back."
+                    Focused pages designed around one clear goal:
+                    getting visitors to take action.
                 </p>
-
-                <div class="customer">
-                    — Daniel
-                </div>
 
             </div>
 
 
-            <div class="review">
+            <div class="capability">
 
-                <div class="stars">
-                    ★★★★★
+                <div class="capability-number">
+                    03
                 </div>
+
+                <h3>Mobile Experience</h3>
 
                 <p>
-                    "Everything was perfect from the starter to dessert.
-                    The tiramisu was fantastic!"
+                    Responsive layouts designed to look strong
+                    across phones, tablets and desktop screens.
                 </p>
-
-                <div class="customer">
-                    — Emma
-                </div>
 
             </div>
 
+
+            <div class="capability">
+
+                <div class="capability-number">
+                    04
+                </div>
+
+                <h3>Website Refresh</h3>
+
+                <p>
+                    Modernizing outdated websites with cleaner
+                    structure, visuals and user experience.
+                </p>
+
+            </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- =========================
+     PROCESS
+========================= -->
 
-    <!-- =========================
-         RESERVATION
-    ========================== -->
+<section class="process" id="process">
 
-    <section id="reservation" class="reservation">
+    <div class="process-inner">
+
+        <div class="section-number">
+            04 — Process
+        </div>
 
         <h2 class="section-title">
-            Reserve Your Table
+            Simple.<br>
+            <span>Intentional.</span>
+        </h2>
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>Discover</h3>
+
+                <p>
+                    Understand the business, audience,
+                    goals and desired positioning.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>Design</h3>
+
+                <p>
+                    Create the visual direction, structure
+                    and experience around the business.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>Build</h3>
+
+                <p>
+                    Turn the concept into a responsive,
+                    polished website.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>Launch</h3>
+
+                <p>
+                    Test, refine and prepare the website
+                    for its audience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     STANDARD
+========================= -->
+
+<section class="standard">
+
+    <div class="standard-content">
+
+        <div class="section-number">
+            05 — The ES Standard
+        </div>
+
+        <h2>
+            Less noise.<br>
+            More <span>presence.</span>
         </h2>
 
         <p>
-            Planning a special dinner? We'd love to have you.
+            Every project should have a clear identity,
+            a strong first impression and a reason for
+            visitors to keep exploring.
         </p>
 
+    </div>
 
-        <!-- CHANGE THE PHONE NUMBER LATER -->
+</section>
 
-        <a
-            href="https://wa.me/31612345678?text=Hi%20La%20Tavola,%20I%20would%20like%20to%20reserve%20a%20table."
-            class="button"
-            target="_blank"
-        >
-            Reserve On WhatsApp
-        </a>
+<!-- =========================
+     TESTIMONIALS
+========================= -->
 
-    </section>
+<section class="testimonials">
 
+    <div class="section-header">
 
+        <div>
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+            <div class="section-number">
+                06 — Concept Feedback
+            </div>
 
-    <section id="contact" class="contact">
-
-        <h2 class="section-title">
-            Visit Us
-        </h2>
-
-
-        <div class="contact-info">
-
-            <p>
-                📍 123 Main Street, Rotterdam
-            </p>
-
-            <p>
-                📞 +31 6 12345678
-            </p>
-
-            <p>
-                ✉️ hello@latavola.nl
-            </p>
-
-            <p>
-                🕒 Tuesday – Sunday: 17:00 – 23:00
-            </p>
+            <h2 class="section-title">
+                The idea<br>
+                <span>in practice.</span>
+            </h2>
 
         </div>
 
-
-        <a
-            href="mailto:hello@latavola.nl"
-            class="button"
-        >
-            Contact Restaurant
-        </a>
-
-    </section>
+    </div>
 
 
+    <div class="testimonial-grid">
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <div class="testimonial">
 
-    <footer>
-
-        © 2026 La Tavola — Authentic Italian Cuisine
-
-    </footer>
-
-
-</body>
-</html>
+            <p>
+                "The concept feels premium from the first screen
+                and makes the business look much more established."
 ```
-
