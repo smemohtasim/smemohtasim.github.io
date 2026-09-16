@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>La Tavola | Italian Restaurant</title>
+
+<meta name="description" content="La Tavola — modern Italian dining, handcrafted pasta, wine and unforgettable evenings.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#111;
+    color:#f5f1e8;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px, 90%);
+    margin:auto;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:20px 0;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(12px);
+}
+
+.nav-inner{
+    width:min(1180px,90%);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:Georgia,serif;
+    font-size:28px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#d8b36a;
+}
+
+.nav-button{
+    background:#d8b36a;
+    color:#111;
+    padding:12px 20px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85")
+    center/cover;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    color:#d8b36a;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(55px,8vw,105px);
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:19px;
+    max-width:600px;
+    color:#ddd;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:30px;
+    background:#d8b36a;
+    color:#111;
+    font-weight:bold;
+    margin-right:10px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid #fff;
+    color:#fff;
+}
+
+/* SECTIONS */
+
+section{
+    padding:110px 0;
+}
+
+.section-title{
+    font-family:Georgia,serif;
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    color:#aaa;
+    max-width:650px;
+    margin-bottom:55px;
+}
+
+/* MENU */
+
+.menu{
+    background:#181818;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.menu-item{
+    padding:28px;
+    border:1px solid #292929;
+    background:#141414;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    transform:translateY(-5px);
+    border-color:#d8b36a;
+}
+
+.menu-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.menu-item h3{
+    font-family:Georgia,serif;
+    font-size:23px;
+}
+
+.price{
+    color:#d8b36a;
+    font-weight:bold;
+}
+
+.menu-item p{
+    color:#999;
+    margin-top:8px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.about-image{
+    height:600px;
+    object-fit:cover;
+}
+
+.about-text p{
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+/* FEATURES */
+
+.features{
+    background:#181818;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.feature{
+    padding:35px;
+    border:1px solid #292929;
+}
+
+.feature span{
+    color:#d8b36a;
+    font-size:30px;
+}
+
+.feature h3{
+    margin:20px 0 10px;
+    font-family:Georgia,serif;
+    font-size:24px;
+}
+
+.feature p{
+    color:#999;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.gallery img{
+    height:350px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.02);
+}
+
+/* REVIEWS */
+
+.reviews{
+    background:#181818;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    padding:35px;
+    background:#121212;
+    border:1px solid #292929;
+}
+
+.stars{
+    color:#d8b36a;
+    margin-bottom:15px;
+}
+
+.review p{
+    color:#ccc;
+    font-style:italic;
+}
+
+.review strong{
+    display:block;
+    margin-top:20px;
+}
+
+/* RESERVATION */
+
+.reservation{
+    text-align:center;
+    background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+    url("https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=2000&q=85")
+    center/cover;
+}
+
+.reservation p{
+    max-width:650px;
+    margin:0 auto 30px;
+    color:#ddd;
+}
+
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.contact-card{
+    padding:35px;
+    background:#181818;
+    border:1px solid #292929;
+}
+
+.contact-card h3{
+    font-family:Georgia,serif;
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.contact-card p{
+    color:#aaa;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 0;
+    border-top:1px solid #292929;
+    text-align:center;
+    color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:58px;
+    }
+
+    .menu-grid,
+    .about-grid,
+    .feature-grid,
+    .review-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        height:400px;
+    }
+
+    section{
+        padding:80px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+    <div class="nav-inner">
+
+        <a href="#" class="logo">LA TAVOLA</a>
+
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="#reserve" class="nav-button">Reserve</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Italian Dining • Since 1998
+            </div>
+
+            <h1>
+                Taste the<br>
+                Italian way.
+            </h1>
+
+            <p>
+                Handcrafted pasta, seasonal ingredients and timeless
+                Italian hospitality in an unforgettable setting.
+            </p>
+
+            <a href="#reserve" class="btn">
+                Reserve a Table
+            </a>
+
+            <a href="#menu" class="btn btn-outline">
+                Explore Menu
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu" class="menu">
+
+    <div class="container">
+
+        <div class="eyebrow">Our Menu</div>
+
+        <h2 class="section-title">
+            Crafted with passion.
+        </h2>
+
+        <p class="section-subtitle">
+            Traditional Italian recipes reimagined with premium,
+            seasonal ingredients.
+        </p>
+
+        <div class="menu-grid">
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Truffle Tagliolini</h3>
+                    <span class="price">€24</span>
+                </div>
+                <p>
+                    Fresh tagliolini, black truffle, parmesan and butter.
+                </p>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Burrata</h3>
+                    <span class="price">€16</span>
+                </div>
+                <p>
+                    Creamy burrata, tomatoes, basil and extra virgin olive oil.
+                </p>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Branzino</h3>
+                    <span class="price">€31</span>
+                </div>
+                <p>
+                    Mediterranean sea bass, lemon, herbs and seasonal vegetables.
+                </p>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Osso Buco</h3>
+                    <span class="price">€34</span>
+                </div>
+                <p>
+                    Slow-cooked veal shank with saffron risotto.
+                </p>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Tiramisu</h3>
+                    <span class="price">€11</span>
+                </div>
+                <p>
+                    Classic mascarpone, espresso and cocoa.
+                </p>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-top">
+                    <h3>Panna Cotta</h3>
+                    <span class="price">€10</span>
+                </div>
+                <p>
+                    Vanilla panna cotta with seasonal berries.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container about-grid">
+
+        <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85"
+            alt="Italian restaurant interior"
+        >
+
+        <div class="about-text">
+
+            <div class="eyebrow">
+                Our Story
+            </div>
+
+            <h2 class="section-title">
+                A table worth remembering.
+            </h2>
+
+            <p>
+                La Tavola was created around one simple idea:
+                great food tastes even better when shared.
+            </p>
+
+            <p>
+                Our kitchen combines traditional Italian techniques
+                with modern creativity, using ingredients chosen
+                from trusted local and Italian producers.
+            </p>
+
+            <p>
+                From a romantic dinner to a celebration with friends,
+                every evening at La Tavola is designed to feel special.
+            </p>
+
+            <a href="#reserve" class="btn">
+                Book Your Evening
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="container">
+
+        <div class="eyebrow">The Experience</div>
+
+        <h2 class="section-title">
+            More than dinner.
+        </h2>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <span>01</span>
+                <h3>Fresh Ingredients</h3>
+                <p>
+                    Seasonal ingredients selected for quality and flavor.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>02</span>
+                <h3>Handmade Pasta</h3>
+                <p>
+                    Pasta prepared fresh in our kitchen every day.
+                </p>
+            </div>
+
+            <div class="feature">
+                <span>03</span>
+                <h3>Italian Hospitality</h3>
+                <p>
+                    Warm service designed to make every guest feel at home.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="eyebrow">Gallery</div>
+
+        <h2 class="section-title">
+            Inside La Tavola.
+        </h2>
+
+        <div class="gallery">
+
+            <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                alt="Restaurant interior"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+                alt="Italian food"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85"
+                alt="Restaurant table"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section class="reviews">
+
+    <div class="container">
+
+        <div class="eyebrow">Guest Notes</div>
+
+        <h2 class="section-title">
+            A few kind words.
+        </h2>
+
+        <div class="review-grid">
+
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "Beautiful atmosphere, incredible pasta and
+                    genuinely warm service."
+                </p>
+                <strong>— Demo Guest</strong>
+            </div>
+
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "The perfect place for a special evening.
+                    Everything felt beautifully considered."
+                </p>
+                <strong>— Demo Guest</strong>
+            </div>
+
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "The food was fantastic and the atmosphere
+                    made the whole evening memorable."
+                </p>
+                <strong>— Demo Guest</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESERVATION -->
+
+<section id="reserve" class="reservation">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Reservations
+        </div>
+
+        <h2 class="section-title">
+            Your table is waiting.
+        </h2>
+
+        <p>
+            Planning a romantic dinner, family celebration or evening
+            with friends? Contact us to reserve your table.
+        </p>
+
+        <a
+            href="https://wa.me/31612345678?text=Hello%20La%20Tavola%2C%20I%27d%20like%20to%20make%20a%20reservation."
+            class="btn"
+            target="_blank"
+        >
+            Reserve via WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="eyebrow">Visit Us</div>
+
+        <h2 class="section-title">
+            Come to the table.
+        </h2>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+
+                <h3>La Tavola</h3>
+
+                <p>
+                    123 Example Street
+                </p>
+
+                <p>
+                    Rotterdam, Netherlands
+                </p>
+
+                <p>
+                    +31 6 12 34 56 78
+                </p>
+
+                <p>
+                    hello@latavola.example
+                </p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <h3>Opening Hours</h3>
+
+                <p>Monday — Closed</p>
+                <p>Tuesday — Thursday: 17:00 — 23:00</p>
+                <p>Friday — Saturday: 17:00 — 00:00</p>
+                <p>Sunday: 16:00 — 22:00</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 LA TAVOLA — Demo Concept by ES CREATION
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
