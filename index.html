@@ -1374,4 +1374,199 @@ footer {
             <p>
                 "The concept feels premium from the first screen
                 and makes the business look much more established."
+            </p>
+
+            <div class="testimonial-name">
+                Concept Client — Hospitality
+            </div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+            <p>
+                "Clean, modern and easy to understand.
+                The website finally feels like the brand."
+            </p>
+
+            <div class="testimonial-name">
+                Concept Client — Personal Care
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-inner">
+
+        <div>
+
+            <div class="small-label">
+                07 — Contact
+            </div>
+
+            <h2>
+                Let's build<br>
+                something <span>great.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="contact-text">
+
+            <p>
+                Have a business that needs a stronger digital presence?
+                Let's talk about what we can create.
+            </p>
+
+            <a
+                href="mailto:hello@escreation.studio"
+                class="contact-email"
+            >
+                hello@escreation.studio
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        ES CREATION
+    </div>
+
+    <div>
+        Independent Digital Studio
+    </div>
+
+    <div>
+        © 2026 ES CREATION
+    </div>
+
+</footer>
+
+<script>
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load", function() {
+
+    setTimeout(function() {
+
+        document.getElementById("loader").classList.add("hide");
+
+        document.body.classList.remove("loading");
+
+    }, 700);
+
+});
+
+
+/* =========================
+   NAVIGATION SCROLL
+========================= */
+
+window.addEventListener("scroll", function() {
+
+    const navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", function() {
+
+    navLinks.classList.toggle("open");
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navLinks.classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+
+document.addEventListener("mousemove", function(e) {
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+    cursorRing.style.left = e.clientX + "px";
+    cursorRing.style.top = e.clientY + "px";
+
+});
+
+
+/* =========================
+   IMAGE HOVER EFFECT
+========================= */
+
+document.querySelectorAll(".project").forEach(function(project) {
+
+    project.addEventListener("mouseenter", function() {
+
+        cursor.style.transform = "translate(-50%, -50%) scale(2)";
+
+    });
+
+    project.addEventListener("mouseleave", function() {
+
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
 ```
