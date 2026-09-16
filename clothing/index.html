@@ -1,1 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>NOIRÉ — Maison</title>
+
+<meta name="description" content="NOIRÉ — Contemporary luxury fashion.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0a0a0a;
+    color:#f5f2ed;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:22px 0;
+    background:rgba(10,10,10,.72);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-inner{
+    width:min(1200px,90%);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:Georgia,serif;
+    font-size:28px;
+    letter-spacing:6px;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#ccc;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.2)),
+    url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:11px;
+    color:#b9a17a;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(65px,10vw,135px);
+    line-height:.9;
+    font-weight:400;
+    letter-spacing:-4px;
+    margin-bottom:30px;
+}
+
+.hero p{
+    max-width:520px;
+    color:#ccc;
+    font-size:17px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 28px;
+    border:1px solid #fff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* SECTIONS */
+
+section{
+    padding:120px 0;
+}
+
+.section-title{
+    font-family:Georgia,serif;
+    font-size:58px;
+    font-weight:400;
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.section-text{
+    color:#999;
+    max-width:600px;
+    line-height:1.8;
+}
+
+/* COLLECTION */
+
+.collection{
+    background:#111;
+}
+
+.collection-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:50px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product{
+    position:relative;
+    overflow:hidden;
+}
+
+.product img{
+    height:560px;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.product:hover img{
+    transform:scale(1.04);
+}
+
+.product-info{
+    padding:20px 0;
+}
+
+.product-info h3{
+    font-family:Georgia,serif;
+    font-size:22px;
+    font-weight:400;
+}
+
+.product-info p{
+    color:#777;
+    margin-top:6px;
+}
+
+.price{
+    color:#b9a17a;
+    margin-top:8px;
+}
+
+/* STORY */
+
+.story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.story img{
+    height:650px;
+    object-fit:cover;
+}
+
+.story-text p{
+    color:#999;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+/* PHILOSOPHY */
+
+.philosophy{
+    text-align:center;
+    background:#f1eee8;
+    color:#111;
+}
+
+.philosophy .eyebrow{
+    color:#8d7655;
+}
+
+.philosophy h2{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,7vw,90px);
+    font-weight:400;
+    max-width:950px;
+    margin:auto;
+    line-height:1;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.gallery img{
+    height:500px;
+    object-fit:cover;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+    background:#111;
+    text-align:center;
+}
+
+.newsletter p{
+    color:#999;
+    max-width:550px;
+    margin:0 auto 30px;
+}
+
+.email-box{
+    display:flex;
+    max-width:500px;
+    margin:auto;
+}
+
+.email-box input{
+    flex:1;
+    padding:16px;
+    background:#1b1b1b;
+    border:1px solid #333;
+    color:white;
+}
+
+.email-box button{
+    padding:16px 25px;
+    background:#fff;
+    color:#000;
+    border:0;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px 0;
+    border-top:1px solid #222;
+    text-align:center;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product img{
+        height:500px;
+    }
+
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .story img{
+        height:450px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:400px;
+    }
+
+    .collection-header{
+        display:block;
+    }
+
+    section{
+        padding:85px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="nav-inner">
+
+        <a href="#" class="logo">NOIRÉ</a>
+
+        <ul class="nav-links">
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#story">Maison</a></li>
+            <li><a href="#gallery">Campaign</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                NOIRÉ MAISON
+            </div>
+
+            <h1>
+                Quiet<br>
+                Luxury.
+            </h1>
+
+            <p>
+                Contemporary clothing designed around restraint,
+                craftsmanship and timeless silhouettes.
+            </p>
+
+            <a href="#collection" class="btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section id="collection" class="collection">
+
+    <div class="container">
+
+        <div class="collection-header">
+
+            <div>
+                <div class="eyebrow">
+                    Autumn / Winter 2026
+                </div>
+
+                <h2 class="section-title">
+                    The Collection
+                </h2>
+            </div>
+
+            <p class="section-text">
+                A study in texture, proportion and understated luxury.
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=90"
+                    alt="Luxury jacket"
+                >
+
+                <div class="product-info">
+                    <h3>Signature Leather Jacket</h3>
+                    <p>Italian leather</p>
+                    <div class="price">€890</div>
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=90"
+                    alt="Luxury suit"
+                >
+
+                <div class="product-info">
+                    <h3>Tailored Evening Suit</h3>
+                    <p>Wool & cashmere</p>
+                    <div class="price">€1,250</div>
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90"
+                    alt="Luxury fashion"
+                >
+
+                <div class="product-info">
+                    <h3>Silk Evening Dress</h3>
+                    <p>Pure silk</p>
+                    <div class="price">€760</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STORY -->
+
+<section id="story">
+
+    <div class="container story">
+
+        <img
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90"
+            alt="Fashion studio"
+        >
+
+        <div class="story-text">
+
+            <div class="eyebrow">
+                The Maison
+            </div>
+
+            <h2 class="section-title">
+                Designed to last beyond the season.
+            </h2>
+
+            <p>
+                NOIRÉ is a contemporary fashion house built around
+                timeless design and exceptional materials.
+            </p>
+
+            <p>
+                Each piece is created with a focus on proportion,
+                texture and craftsmanship rather than trends.
+            </p>
+
+            <p>
+                The result is a wardrobe that feels modern today
+                and relevant for years to come.
+            </p>
+
+            <a href="#contact" class="btn">
+                Discover NOIRÉ
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+
+<section class="philosophy">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Our Philosophy
+        </div>
+
+        <h2>
+            Luxury doesn't need to shout.
+        </h2>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Campaign
+        </div>
+
+        <h2 class="section-title">
+            Autumn / Winter
+        </h2>
+
+        <div class="gallery">
+
+            <img
+                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=90"
+                alt="NOIRÉ campaign"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1506629905607-d9d2f8f4c5f0?auto=format&fit=crop&w=1200&q=90"
+                alt="NOIRÉ fashion campaign"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=90"
+                alt="NOIRÉ fashion"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=90"
+                alt="NOIRÉ collection"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section id="contact" class="newsletter">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Private Access
+        </div>
+
+        <h2 class="section-title">
+            Enter the world of NOIRÉ.
+        </h2>
+
+        <p>
+            Join the private mailing list for collection previews,
+            invitations and Maison announcements.
+        </p>
+
+        <form class="email-box"
+              onsubmit="event.preventDefault(); alert('Thank you. This is a demo form.');">
+
+            <input
+                type="email"
+                placeholder="Your email address"
+                required
+            >
+
+            <button type="submit">
+                Join
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 NOIRÉ MAISON — Demo Concept by ES CREATION
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
